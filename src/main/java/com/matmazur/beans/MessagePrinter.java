@@ -29,6 +29,5 @@ public class MessagePrinter {
 
         return decorator != null ? producer.produce(decorator.decorate(s)) : producer.produce(s);
     }
-
 }
 
