@@ -1,9 +1,10 @@
 package com.matmazur.beans.decorators;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
-@Primary
+@Qualifier("lowerCaseDecorator")
 @Component
 public class LowerCaseDecorator implements TextDecorator {
     @Override

@@ -3,6 +3,7 @@ package com.matmazur.beans;
 import com.matmazur.beans.decorators.TextDecorator;
 import com.matmazur.beans.producers.MessageProducer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -20,7 +21,7 @@ public class MessagePrinter {
     }
 
     @Autowired(required = false)
-    public void setDecorator(TextDecorator decorator) {
+    public void setDecorator(@Qualifier("lowerCaseDecorator") TextDecorator decorator) {
         this.decorator = decorator;
     }
 
