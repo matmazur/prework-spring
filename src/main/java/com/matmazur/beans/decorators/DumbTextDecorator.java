@@ -1,14 +1,14 @@
 package com.matmazur.beans.decorators;
 
-import org.springframework.beans.factory.annotation.Qualifier;
+import com.matmazur.beans.decorators.qualifiers.DumbDecorator;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@Qualifier("dumbTextDecorator")
 @Component
+@DumbDecorator
 public class DumbTextDecorator implements TextDecorator {
 
     @Override
