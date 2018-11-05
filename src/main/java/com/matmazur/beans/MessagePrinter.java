@@ -1,3 +1,5 @@
+package com.matmazur.beans;
+
 public class MessagePrinter {
 
     private MessageProducer producer;
@@ -20,7 +22,7 @@ public class MessagePrinter {
 
     @Override
     public String toString() {
-        return "MessagePrinter{" +
+        return "com.matmazur.beans.MessagePrinter{" +
                 "producer=" + producer +
                 '}';
     }
