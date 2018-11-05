@@ -1,4 +1,4 @@
-package com.matmazur.beans;
+package com.matmazur.beans.decorators;
 
 import org.springframework.stereotype.Component;
 

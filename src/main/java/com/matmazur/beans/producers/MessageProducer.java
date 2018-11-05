@@ -1,4 +1,4 @@
-package com.matmazur.beans;
+package com.matmazur.beans.producers;
 
 public interface MessageProducer {
 

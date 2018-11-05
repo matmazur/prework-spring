@@ -1,5 +1,7 @@
 package com.matmazur.beans;
 
+import com.matmazur.beans.decorators.TextDecorator;
+import com.matmazur.beans.producers.MessageProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
