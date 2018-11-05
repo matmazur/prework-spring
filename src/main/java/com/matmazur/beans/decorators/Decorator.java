@@ -1,17 +1,23 @@
-package com.matmazur.beans.decorators.qualifiers;
-
+package com.matmazur.beans.decorators;
 
 import org.springframework.beans.factory.annotation.Qualifier;
-
-import static java.lang.annotation.ElementType.*;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import static java.lang.annotation.ElementType.*;
 
 @Target({METHOD, TYPE, FIELD, PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Qualifier
-public @interface DumbDecorator {
+public @interface Decorator {
+
+    DecoratorType type();
+
+
+    public enum DecoratorType {
+        DUMB, LOWER;
+    }
+
 }

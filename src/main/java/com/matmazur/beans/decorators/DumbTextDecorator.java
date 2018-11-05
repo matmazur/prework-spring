@@ -1,6 +1,7 @@
 package com.matmazur.beans.decorators;
 
-import com.matmazur.beans.decorators.qualifiers.DumbDecorator;
+import com.matmazur.beans.decorators.Decorator.*;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -8,7 +9,8 @@ import java.util.Arrays;
 import java.util.List;
 
 @Component
-@DumbDecorator
+@Primary
+@Decorator(type = DecoratorType.DUMB)
 public class DumbTextDecorator implements TextDecorator {
 
     @Override
