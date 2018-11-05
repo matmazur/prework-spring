@@ -21,7 +21,6 @@ public class MessagePrinter {
         this.producer = producer;
     }
 
-
     //@Qualifier("dumbTextDecorator") works aswell
     @Autowired(required = false)
     public void setDecorator(@Decorator(type = DecoratorType.LOWER) TextDecorator decorator) {

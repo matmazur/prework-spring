@@ -15,8 +15,7 @@ public @interface Decorator {
 
     DecoratorType type();
 
-
-    public enum DecoratorType {
+    enum DecoratorType {
         DUMB, LOWER;
     }
 
