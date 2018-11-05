@@ -1,5 +1,8 @@
 package com.matmazur.beans;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class MessagePrinter {
 
     private MessageProducer producer;
