@@ -1,12 +1,12 @@
 package com.matmazur.app;
 
 import com.matmazur.beans.MessagePrinter;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
     public static void main(String[] args) {
 
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans-config.xml");
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
         MessagePrinter printer = context.getBean(MessagePrinter.class);
 
