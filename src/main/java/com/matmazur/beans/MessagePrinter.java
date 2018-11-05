@@ -17,22 +17,15 @@ public class MessagePrinter {
         this.producer = producer;
     }
 
-
-
-    @Autowired
+    @Autowired(required = false)
     public void setDecorator(TextDecorator decorator) {
         this.decorator = decorator;
     }
 
-    public void produce(String s) {
-        producer.produce(s);
+    public String produce(String s) {
+
+        return decorator != null ? producer.produce(decorator.decorate(s)) : producer.produce(s);
     }
-
-    public String decorate(String s){
-        return decorator.decorate(s);
-    }
-
-
 
 }
 

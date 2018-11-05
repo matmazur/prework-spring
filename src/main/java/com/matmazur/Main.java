@@ -14,10 +14,11 @@ public class Main {
 
         MessagePrinter printer = context.getBean(MessagePrinter.class);
 
-        printer.produce("Stuff, things.");
+        String x = printer.produce("Stuff, things.");
 
-        System.out.println(printer.decorate("Stuff, things."));
-        System.out.println(printer.decorate("Johnny Bravo"));
+        System.out.println(x);
+
+        System.out.println(printer.produce("Johnny Bravo"));
 
 
         context.close();

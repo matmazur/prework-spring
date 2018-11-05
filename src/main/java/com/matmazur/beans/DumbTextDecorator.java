@@ -9,16 +9,14 @@ import java.util.List;
 @Component
 public class DumbTextDecorator implements TextDecorator {
 
-
     @Override
     public String decorate(String s) {
 
-        String result = "";
         s = s.toUpperCase();
         List<String> list = new ArrayList<>(Arrays.asList(s.split("")));
         list.add(".");
 
-        result = String.join(".", list)
+        String result = String.join(".", list)
                 .replace(",. ", ", ")
                 .replace(" .", " ")
                 .replace("..", ".")
@@ -26,10 +24,9 @@ public class DumbTextDecorator implements TextDecorator {
 
         while (result.endsWith(".")) {
 
-            result = result.substring(0,result.length()-1);
+            result = result.substring(0, result.length() - 1);
         }
 
-
-        return result+".";
+        return result + ".";
     }
 }
