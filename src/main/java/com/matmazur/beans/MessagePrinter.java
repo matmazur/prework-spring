@@ -6,30 +6,33 @@ import org.springframework.stereotype.Component;
 @Component
 public class MessagePrinter {
 
-    @Autowired
     private MessageProducer producer;
+    private TextDecorator decorator;
 
     MessagePrinter() {
     }
 
+    @Autowired
     public MessagePrinter(MessageProducer producer) {
         this.producer = producer;
     }
 
-    public MessageProducer getProducer() {
-        return producer;
-    }
-
-    public void setProducer(MessageProducer producer) {
-        this.producer = producer;
-    }
 
 
-    @Override
-    public String toString() {
-        return "com.matmazur.beans.MessagePrinter{" +
-                "producer=" + producer +
-                '}';
+    @Autowired
+    public void setDecorator(TextDecorator decorator) {
+        this.decorator = decorator;
     }
+
+    public void produce(String s) {
+        producer.produce(s);
+    }
+
+    public String decorate(String s){
+        return decorator.decorate(s);
+    }
+
+
+
 }
 
