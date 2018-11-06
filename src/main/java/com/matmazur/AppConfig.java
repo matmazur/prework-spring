@@ -30,7 +30,6 @@ public class AppConfig {
     @Autowired
     Environment env;
 
-
     @Bean
     @Profile("default")
     public DatabaseDatasource getDefaultDatasource() {
@@ -52,22 +51,19 @@ public class AppConfig {
                 try {
 
                     String fileName = env.getProperty("fileName");
+
                     ClassLoader classLoader = FileMessageProducer.class.getClassLoader();
-
-
                     Path filePath = new File(classLoader.getResource(fileName).toURI()).toPath();
+
                     List<String> list = Files.readAllLines(filePath);
                     return list;
                 } catch (URISyntaxException | IOException e) {
                     e.printStackTrace();
                 }
                 return new ArrayList<>();
-
             }
-
         };
     }
-
 
     @Bean
     @Qualifier("someNumber")

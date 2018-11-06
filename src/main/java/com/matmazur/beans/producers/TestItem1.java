@@ -12,7 +12,7 @@ public class TestItem1 {
 
     public int number;
 
-    public TestItem1(){
-        number=new Random().nextInt(100);
+    public TestItem1() {
+        number = new Random().nextInt(100);
     }
 }
