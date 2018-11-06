@@ -1,6 +1,7 @@
 package com.matmazur.beans.producers;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -15,18 +16,21 @@ import java.util.List;
 public class FileMessageProducer implements MessageProducer {
 
 
-    @Value("${fileName}")
-    private  String fileName;
+    @Autowired
+    Environment env;
 
     @Override
     public String produce() {
 
         ClassLoader classLoader = FileMessageProducer.class.getClassLoader();
+        String fileName = env.getProperty("fileName");
 
         List<String> lines = null;
         try {
-            Path path = new File(classLoader.getResource(fileName).toURI()).toPath();
-            lines = Files.readAllLines(path);
+            if (fileName != null) {
+                Path path = new File(classLoader.getResource(fileName).toURI()).toPath();
+                lines = Files.readAllLines(path);
+            }
         } catch (URISyntaxException | IOException e) {
             e.printStackTrace();
         }
