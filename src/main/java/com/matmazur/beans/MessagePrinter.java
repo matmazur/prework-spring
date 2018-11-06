@@ -23,13 +23,13 @@ public class MessagePrinter {
 
     //@Qualifier("dumbTextDecorator") works aswell
     @Autowired(required = false)
-    public void setDecorator(@Decorator(type = DecoratorType.LOWER) TextDecorator decorator) {
+    public void setDecorator(@Decorator(type = DecoratorType.DUMB) TextDecorator decorator) {
         this.decorator = decorator;
     }
 
-    public String produce(String s) {
+    public String produce() {
 
-        return decorator != null ? producer.produce(decorator.decorate(s)) : producer.produce(s);
+        return decorator != null ? decorator.decorate(producer.produce()) : producer.produce();
     }
 }
 

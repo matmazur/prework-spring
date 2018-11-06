@@ -14,9 +14,8 @@ public class Main {
 
         MessagePrinter printer = context.getBean(MessagePrinter.class);
 
-        String x = printer.produce("Stuff, things.");
+        String x = printer.produce();
         System.out.println(x);
-        System.out.println(printer.produce("Johnny Bravo"));
 
         context.close();
     }

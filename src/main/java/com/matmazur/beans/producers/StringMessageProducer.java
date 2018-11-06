@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 public class StringMessageProducer implements MessageProducer {
 
     @Override
-    public String produce(String s) {
-        return s;
+    public String produce() {
+        return "This is a default string";
     }
 }
