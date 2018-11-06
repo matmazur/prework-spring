@@ -21,6 +21,6 @@ public class AppConfig {
     @Bean
     @Qualifier("someNumber")
     public int getRandomNumber(){
-        return new Random().nextInt();
+        return new Random().nextInt(100);
     }
 }

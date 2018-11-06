@@ -14,7 +14,6 @@ import java.lang.annotation.Target;
 @Target({FIELD, PARAMETER, METHOD, TYPE})
 public @interface Producer {
 
-
     ProducerType type();
 
     enum ProducerType {
