@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 @Component
+@Producer(type = Producer.ProducerType.FILE)
 public class FileMessageProducer implements MessageProducer {
 
     @Override

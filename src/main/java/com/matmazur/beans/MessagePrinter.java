@@ -4,6 +4,7 @@ import com.matmazur.beans.decorators.Decorator;
 import com.matmazur.beans.decorators.Decorator.*;
 import com.matmazur.beans.decorators.TextDecorator;
 import com.matmazur.beans.producers.MessageProducer;
+import com.matmazur.beans.producers.Producer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -18,7 +19,7 @@ public class MessagePrinter {
     }
 
     @Autowired
-    public MessagePrinter(@Qualifier("fileMessageProducer") MessageProducer producer) {
+    public MessagePrinter(@Producer(type = Producer.ProducerType.FILE) MessageProducer producer) {
         this.producer = producer;
     }
 
