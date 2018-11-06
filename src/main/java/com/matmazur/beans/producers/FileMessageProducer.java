@@ -2,33 +2,38 @@ package com.matmazur.beans.producers;
 
 import org.springframework.stereotype.Component;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.nio.file.Path;
 import java.util.List;
 
 @Component
 @Producer(type = Producer.ProducerType.FILE)
 public class FileMessageProducer implements MessageProducer {
 
+    private final String fileName = "someFile.txt";
+
     @Override
     public String produce() {
 
+        ClassLoader classLoader = FileMessageProducer.class.getClassLoader();
+
         List<String> lines = null;
         try {
-            lines = Files.readAllLines(Paths.get("someFile.txt"));
-        } catch (IOException e) {
+            Path path = new File(classLoader.getResource(fileName).toURI()).toPath();
+            lines = Files.readAllLines(path);
+        } catch (URISyntaxException | IOException e) {
             e.printStackTrace();
         }
+
 
         String result = "";
 
         if (lines != null) {
-
             result = lines.stream().reduce(result, (x, y) -> x + "\n" + y);
-
         }
-
         return result;
     }
 }
