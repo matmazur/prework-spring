@@ -2,9 +2,7 @@ package com.matmazur.beans.decorators;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 import static java.lang.annotation.ElementType.*;
 
@@ -16,7 +14,7 @@ public @interface Decorator {
     DecoratorType type();
 
     enum DecoratorType {
-        DUMB, LOWER;
+        DUMB, LOWER
     }
 
 }
