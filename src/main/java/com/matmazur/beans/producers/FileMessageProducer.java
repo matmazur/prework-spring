@@ -1,7 +1,6 @@
 package com.matmazur.beans.producers;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -15,8 +14,8 @@ import java.util.List;
 @Producer(type = Producer.ProducerType.FILE)
 public class FileMessageProducer implements MessageProducer {
 
-    @Autowired
-    @Qualifier("messageFile")
+
+    @Value("${fileName}")
     private  String fileName;
 
     @Override
