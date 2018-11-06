@@ -7,6 +7,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
+import java.util.List;
+
 @Configuration
 @ComponentScan
 @PropertySource("classpath:config.properties")
@@ -17,25 +19,20 @@ public class Main {
 
         MessagePrinter printer = context.getBean(MessagePrinter.class);
 
-        String x = printer.produce();
-        System.out.println(x);
-
-        MessagePrinter printer1 = context.getBean(MessagePrinter.class);
-        MessagePrinter printer2 = context.getBean(MessagePrinter.class);
-
-        System.out.println(printer1.item.number);
-        System.out.println(printer2.item.number);
-
-
+//        String x = printer.produce();
+//        System.out.println(x);
+//
+//        MessagePrinter printer1 = context.getBean(MessagePrinter.class);
+//        MessagePrinter printer2 = context.getBean(MessagePrinter.class);
+//
+//        System.out.println(printer1.item.number);
+//        System.out.println(printer2.item.number);
 
 
+        TestRepository repo = context.getBean(TestRepository.class);
+        List<String> list = repo.getAll();
 
-
-
-
-
-
-
+        list.forEach(System.out::println);
 
         context.close();
     }

@@ -1,5 +1,6 @@
 package com.matmazur;
 
+import com.matmazur.beans.producers.FileMessageProducer;
 import com.matmazur.datasource.DatabaseDatasource;
 import com.matmazur.profiles.DevProfile;
 import com.matmazur.profiles.ProductionProfile;
@@ -7,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 
 import java.io.File;
@@ -20,12 +23,19 @@ import java.util.List;
 import java.util.Random;
 
 @Configuration
+@PropertySource("classpath:config.properties")
+
 public class AppConfig {
 
     @Autowired
     Environment env;
 
-    private String filename = env.getProperty("fileName");
+
+    @Bean
+    @Profile("default")
+    public DatabaseDatasource getDefaultDatasource() {
+        return (() -> Arrays.asList("KasiaDefault", "BartekDefault"));
+    }
 
     @Bean
     @DevProfile
@@ -40,7 +50,12 @@ public class AppConfig {
             @Override
             public List<String> getDatabase() {
                 try {
-                    Path filePath = new File(getClass().getResource(filename).toURI()).toPath();
+
+                    String fileName = env.getProperty("fileName");
+                    ClassLoader classLoader = FileMessageProducer.class.getClassLoader();
+
+
+                    Path filePath = new File(classLoader.getResource(fileName).toURI()).toPath();
                     List<String> list = Files.readAllLines(filePath);
                     return list;
                 } catch (URISyntaxException | IOException e) {

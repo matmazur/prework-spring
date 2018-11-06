@@ -7,12 +7,9 @@ import com.matmazur.beans.producers.MessageProducer;
 import com.matmazur.beans.producers.Producer;
 import com.matmazur.beans.producers.TestItem1;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class MessagePrinter {
 
     @Autowired
