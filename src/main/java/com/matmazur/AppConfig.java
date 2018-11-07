@@ -52,8 +52,7 @@ public class AppConfig {
 
                     String fileName = env.getProperty("fileName");
 
-                    ClassLoader classLoader = FileMessageProducer.class.getClassLoader();
-                    Path filePath = new File(classLoader.getResource(fileName).toURI()).toPath();
+                    Path filePath = new File(getClass().getClassLoader().getResource(fileName).toURI()).toPath();
 
                     List<String> list = Files.readAllLines(filePath);
                     return list;

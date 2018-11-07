@@ -22,13 +22,12 @@ public class FileMessageProducer implements MessageProducer {
     @Override
     public String produce() {
 
-        ClassLoader classLoader = FileMessageProducer.class.getClassLoader();
         String fileName = env.getProperty("fileName");
 
         List<String> lines = null;
         try {
             if (fileName != null) {
-                Path path = new File(classLoader.getResource(fileName).toURI()).toPath();
+                Path path = new File(getClass().getClassLoader().getResource(fileName).toURI()).toPath();
                 lines = Files.readAllLines(path);
             }
         } catch (URISyntaxException | IOException e) {
